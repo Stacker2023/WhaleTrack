@@ -1,0 +1,35 @@
+{
+  "chain": "stacks",
+  "uuid": "a91298cc-38a4-4a78-8471-9b79479ebd57",
+  "name": "Whale track",
+  "version": 1,
+  "networks": {
+    "testnet": {
+      "start_block": 138556,
+      "end_block": 138656,
+      "if_this": {
+        "scope": "stx_event",
+        "actions": ["transfer", "burn"]
+      },
+      "then_that": {
+        "http_post": {
+          "url": "http://localhost:3000/api/events",
+          "authorization_header": ""
+        }
+      }
+    },
+    "mainnet": {
+      "start_block": 1,
+      "if_this": {
+        "scope": "stx_event",
+        "actions": ["transfer", "burn"]
+      },
+      "then_that": {
+        "http_post": {
+          "url": "http://localhost:3000/api/events",
+          "authorization_header": ""
+        }
+      }
+    }
+  }
+}
